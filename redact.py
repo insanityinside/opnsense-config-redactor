@@ -51,13 +51,27 @@ REDACTIONS = [
     # Local/search domain names
     (r'(<domain>)(.+?)(</domain>)',               r'\g<1>' + _R + r'\g<3>', re.DOTALL),
     # Usernames — often email-style or IP-qualified (e.g. root@192.168.x.x in audit logs)
-    (r'(<username>)(.+?)(</username>)',            r'\g<1>' + _R + r'\g<3>', re.DOTALL),
+    (r'(<username>)(.+?)(</username>)',           r'\g<1>' + _R + r'\g<3>', re.DOTALL),
     # IPsec phase1 local/remote identifier (holds domain names or email-style IDs)
     (r'(<id>)(.+?)(</id>)',                       r'\g<1>' + _R + r'\g<3>', re.DOTALL),
     # Cloudflare tunnel / ACME hostnames
-    (r'(<hostnames>)(.+?)(</hostnames>)',          r'\g<1>' + _R + r'\g<3>', re.DOTALL),
+    (r'(<hostnames>)(.+?)(</hostnames>)',         r'\g<1>' + _R + r'\g<3>', re.DOTALL),
     # DNS override zone names
     (r'(<zone>)(.+?)(</zone>)',                   r'\g<1>' + _R + r'\g<3>', re.DOTALL),
+    # Firewall rule audit entries (change history; may include usernames and source IPs)
+    (r'(<audit>)(.+?)(</audit>)',                 r'\g<1>' + _R + r'\g<3>', re.DOTALL),
+    # GeoIP alias settings — the MaxMind download URL embeds the licence key
+    (r'(<geoip>)(.+?)(</geoip>)',                 r'\g<1>' + _R + r'\g<3>', re.DOTALL),
+    # WireGuard public keys — not secret, but identify peers and endpoints
+    (r'(<pubkey>)(.+?)(</pubkey>)',               r'\g<1>' + _R + r'\g<3>', re.DOTALL),
+    # WireGuard private keys
+    (r'(<privkey>)(.+?)(</privkey>)',             r'\g<1>' + _R + r'\g<3>', re.DOTALL),
+    # CrowdSec console enrolment key
+    (r'(<enroll_key>)(.+?)(</enroll_key>)',       r'\g<1>' + _R + r'\g<3>', re.DOTALL),
+    # Zenarmor machine prefix — unique device identifier
+    (r'(<Prefix>)(.+?)(</Prefix>)',               r'\g<1>' + _R + r'\g<3>', re.DOTALL),
+    # Zenarmor cluster UUID — unique device identifier
+    (r'(<ClusterUUID>)(.+?)(</ClusterUUID>)',     r'\g<1>' + _R + r'\g<3>', re.DOTALL),
 ]
 
 # Tags that may hold IP addresses; public IPs are replaced with generic ones.

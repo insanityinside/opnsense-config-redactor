@@ -35,6 +35,12 @@ Writes output to `<config>-redacted.xml` in the same directory. The original fil
 | `<hostnames>` (Cloudflare tunnel / ACME hostnames) | `REDACTED` |
 | `<zone>` (DNS override zone names) | `REDACTED` |
 | `<friendly_name>` (UPnP device name) | `REDACTED` |
+| `<audit>` (firewall rule change history) | `REDACTED` |
+| `<geoip>` (GeoIP alias settings — URL contains MaxMind licence key) | `REDACTED` |
+| `<privkey>` (WireGuard private keys) | `REDACTED` |
+| `<pubkey>` (WireGuard public keys — identifying) | `REDACTED` |
+| `<enroll_key>` (CrowdSec console enrolment key) | `REDACTED` |
+| `<Prefix>`, `<ClusterUUID>` (Zenarmor device identifiers) | `REDACTED` |
 | Public IPv4 addresses in `<ipaddr>`, `<ipaddrv6>`, `<gateway>` | `203.0.113.1` / `2001:db8::1` |
 
 ## What is intentionally left alone
